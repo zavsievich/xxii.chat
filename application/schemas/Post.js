@@ -1,0 +1,15 @@
+({
+  title: 'string',
+  subtitle: '?string',
+  content: 'string',
+  feed: 'Feed',
+  author: 'Author',
+  created: 'datetime',
+  edited: '?datetime',
+  published: '?datetime',
+  deleted: '?datetime',
+  status: { enum: ['draft', 'published', 'archived'], default: 'draft' },
+  reactions: { object: { string: { array: 'Author' } }, comment: 'emoji' },
+  pinned: { type: 'boolean', default: false },
+  attachments: { many: 'File' },
+});

@@ -1,0 +1,22 @@
+{
+  "name": "XXII Chat",
+  "short_name": "xxii",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#009933",
+  "background_color": "#552277",
+  "description": "XXII Distributed Chat Application",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "metarhia.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    }
+  ]
+}
