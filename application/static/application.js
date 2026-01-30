@@ -1,8 +1,8 @@
 import { Metacom } from './metacom.js';
-import { MessageTimeline, MessageComposer } from './message.js';
+import { Message } from './message.js';
 
 window.addEventListener('load', async () => {
-  const messageConfirmed = new MessageTimeline({
+  const messageConfirmed = Message.create({
     id: '1',
     created: new Date(),
     author: {
@@ -21,7 +21,7 @@ window.addEventListener('load', async () => {
     status: "confirmed"
   });
 
-  const messagePending = new MessageComposer({
+  const messagePending = Message.create({
     id: '2',
     created: new Date(),
     author: {

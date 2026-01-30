@@ -75,4 +75,17 @@ class MessageTimeline extends MessageBase {
     }
 }
 
-export { MessageTimeline, MessageComposer };
+class Message {
+    static create(message) {
+        switch (message.status) {
+            case "pending":
+                return new MessageComposer(message);
+
+            default:
+            case "confirmed":
+                return new MessageTimeline(message);
+        }
+    }
+}
+
+export { Message };
