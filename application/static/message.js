@@ -64,7 +64,10 @@ class MessageComposer extends MessageBase {
     renderMessage() {
         const wrapper = document.createElement("div");
         wrapper.classList.add("message-content");
-        wrapper.innerHTML = `${this.message.content}`;
+        const textarea = document.createElement("textarea");
+        textarea.classList.add("message-input");
+        textarea.value = this.message.content;
+        wrapper.appendChild(textarea);
         return wrapper;
     }
 }
