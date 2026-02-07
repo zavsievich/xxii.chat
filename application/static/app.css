@@ -44,6 +44,13 @@ body {
 .message-header-avatar {
     width: 32px;
     height: 32px;
-    border-radius: 50%;
+    border-radius: 9999px;
     background: #222;
+}
+
+.message-input {
+    background: white;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 8px;
 }

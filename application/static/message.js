@@ -41,7 +41,7 @@ class MessageBase {
                 </div>
         `;
         return footerElement;
-    }
+    };
 
     render() {
         const messageContainer = document.createElement("article");
@@ -53,28 +53,55 @@ class MessageBase {
         messageContainer.appendChild(message);
         messageContainer.appendChild(footer);
         return messageContainer;
+    };
+}
+
+class MessageTimeline extends MessageBase {
+    constructor(message) {
+        super(message);
     }
 }
 
 class MessageComposer extends MessageBase {
     constructor(message) {
         super(message);
+
+    }
+
+    setEvents(messageField) {
+        messageField.addEventListener("keydown", (event) => {
+            if (event.key !== 'Enter') return;
+            if (event.shiftKey) {
+                return;
+            }
+            event.preventDefault();
+
+            this.sendMessage();
+            this.clearMessageField(messageField);
+        })
+    }
+
+    async sendMessage() {
+        console.log("send");
+    }
+
+    clearMessageField(messageField) {
+        messageField.innerHTML = '';
     }
 
     renderMessage() {
         const wrapper = document.createElement("div");
         wrapper.classList.add("message-content");
-        const textarea = document.createElement("textarea");
+        const textarea = document.createElement("div");
         textarea.classList.add("message-input");
         textarea.value = this.message.content;
+        textarea.contentEditable = true;
         wrapper.appendChild(textarea);
-        return wrapper;
-    }
-}
 
-class MessageTimeline extends MessageBase {
-    constructor(message) {
-        super(message);
+        // TODO: high coupling
+        this.setEvents(textarea);
+
+        return wrapper;
     }
 }
 
