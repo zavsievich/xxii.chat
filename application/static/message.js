@@ -76,6 +76,8 @@ class MessageComposer extends MessageBase {
             }
             event.preventDefault();
 
+
+            // TODO: high coupling
             this.sendMessage();
             this.clearMessageField(messageField);
         })
