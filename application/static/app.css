@@ -48,9 +48,23 @@ body {
     background: #222;
 }
 
+.message-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
 .message-input {
     background: white;
     color: black;
     padding: 10px 20px;
     border-radius: 8px;
+    flex: 1 0 auto;
+}
+
+.message-send {
+    border: 1px solid black;
+    color: black;
+    background: white;
+    border-radius: 6px;
 }

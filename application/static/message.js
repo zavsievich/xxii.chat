@@ -68,8 +68,8 @@ class MessageComposer extends MessageBase {
 
     }
 
-    setEvents(messageField) {
-        messageField.addEventListener("keydown", (event) => {
+    setEvents({ input, sendButton }) {
+        input.addEventListener("keydown", (event) => {
             if (event.key !== 'Enter') return;
             if (event.shiftKey) {
                 return;
@@ -79,7 +79,15 @@ class MessageComposer extends MessageBase {
 
             // TODO: high coupling
             this.sendMessage();
-            this.clearMessageField(messageField);
+            this.clearMessageField(input);
+        })
+
+        sendButton.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            // TODO: high coupling
+            this.sendMessage();
+            this.clearMessageField(input);
         })
     }
 
@@ -92,16 +100,20 @@ class MessageComposer extends MessageBase {
     }
 
     renderMessage() {
-        const wrapper = document.createElement("div");
+        const wrapper = document.createElement("form");
         wrapper.classList.add("message-content");
         const textarea = document.createElement("div");
         textarea.classList.add("message-input");
         textarea.value = this.message.content;
         textarea.contentEditable = true;
+        const sendButton = document.createElement("button");
+        sendButton.classList.add("message-send");
+        sendButton.innerText = "Send";
         wrapper.appendChild(textarea);
+        wrapper.appendChild(sendButton);
 
         // TODO: high coupling
-        this.setEvents(textarea);
+        this.setEvents({ input: textarea, sendButton });
 
         return wrapper;
     }
