@@ -48,6 +48,15 @@ body {
     background: #222;
 }
 
+.message-header-pinned {
+    background: #222;
+    color: #FFF;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    margin-left: auto;
+}
+
 .message-content {
     display: flex;
     align-items: flex-start;
@@ -67,4 +76,9 @@ body {
     color: black;
     background: white;
     border-radius: 6px;
+}
+
+.message-footer-reactions {
+    display: flex;
+    gap: 4px;
 }

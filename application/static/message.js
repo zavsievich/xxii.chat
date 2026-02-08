@@ -13,11 +13,24 @@ class MessageBase {
                 </div>
                 <div class="message-header-time">
                     ${Intl.DateTimeFormat("en-GB", {
-            timeStyle: "short",
-            dateStyle: "short",
-        }).format(this.message.created)}
+                        timeStyle: "short",
+                        dateStyle: "short",
+                    }).format(this.message.created)}
                 </div>
         `;
+        if (this.message.edited) {
+            const editedElement = document.createElement("span");
+            editedElement.classList.add("message-header-edited");
+            editedElement.innerText = " (edited)";
+            headerElement.querySelector(".message-header-time").appendChild(editedElement);
+        }
+
+        if (this.message.pinned) {
+            const pinnedElement = document.createElement("span");
+            pinnedElement.classList.add("message-header-pinned");
+            pinnedElement.innerText = " (pinned)";
+            headerElement.appendChild(pinnedElement);
+        }
         return headerElement;
     };
 
@@ -30,7 +43,7 @@ class MessageBase {
 
     renderFooter() {
         const footerElement = document.createElement("footer");
-        footerElement.classList.add("message-footer")
+        footerElement.classList.add("message-footer");
         footerElement.innerHTML = `
                 <div class="message-footer-reactions">
                     ${this.message.reactions.map(reaction => `
